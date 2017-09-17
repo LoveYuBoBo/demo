@@ -35,17 +35,23 @@
     <script type="text/javascript">
     	window.onload=function(){
     		var oUl=document.getElementById('box');
-    		var iNow=0;
-    		var timer=null;
-    		var onOff=true;
+    		
+    		
+    		
     		toShow(oUl);
 
     		function toShow(obj){
+    			var iNow=0;
+    			var timer=null;
+    			var onOff=true;
     			var aDiv=obj.getElementsByTagName('div');
     			setInterval(function(){
     				toChange();
+    				
 
     			},4000);
+
+    			clearInterval(timer);
 
     			function toChange(){
     				timer=setInterval(function(){
@@ -57,9 +63,11 @@
     					}
     					else if(onOff)
     					{
+    						
 	    					startMove(aDiv[iNow],{top:0});
 	    					iNow++;
     				    }else{
+    				    
     				    	startMove(aDiv[iNow],{top:-30});
 	    					iNow++;
 	    				}
