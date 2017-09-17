@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	#box div{
+		width: 200px;
+		height: 200px;
+		border: 1px solid black;
+		display: none;
+
+	}
+	.active{
+		background: red;
+	}
+</style>
+<script type="text/javascript">
+
+	window.onload=function(){
+	//  this.oBox=document.getElementById('box');
+	//  aBtn=this.oBox.getElementsByTagName('input');
+	//  aDiv=this.oBox.getElementsByTagName('div');
+	//  init();
+
+
+	// function init(){
+	// for(var i=0;i<aBtn.length;i++){
+	// 	aBtn[i].index=i;
+	// 	aBtn[i].onclick=change;
+	//     }
+ //    }
+	// function change(){
+	// 	for (var j = 0; j<aBtn.length; j++) {
+	// 			aBtn[j].className='';
+	// 			aDiv[j].style.display='none';
+	// 		}
+	// 		this.className='active';
+	// 		aDiv[this.index].style.display='block';
+	// 	}
+	var t1=new Tab();
+	t1.init();
+};
+
+	function Tab(){
+	 this.oBox=document.getElementById('box');
+	 this.aBtn=this.oBox.getElementsByTagName('input');
+	 this.aDiv=this.oBox.getElementsByTagName('div');
+	}
+	
+	Tab.prototype.init = function() {
+		var This=this;
+		for(var i=0;i<this.aBtn.length;i++){
+			this.aBtn[i].index=i;
+			this.aBtn[i].onclick=function(){
+				This.change(this);
+			}
+		}
+	};
+
+	Tab.prototype.change=function(obj){
+		for (var i = 0; i<this.aBtn.length; i++) {
+			this.aBtn[i].className='';
+			this.aDiv[i].style.display='none';
+		}
+		this.aBtn[obj.index].className='active';
+		this.aDiv[obj.index].style.display='block';
+	};
+
+</script>
+<body>
+	<div id="box">
+		<input type="button" class="active" value="1">
+		<input type="button"  value="2">
+		<input type="button" value="3">
+		<div style="display: block;">1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+</body>
+</html>
